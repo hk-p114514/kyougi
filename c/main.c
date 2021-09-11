@@ -46,8 +46,6 @@ int main() {
 	now = add(now, cost);
 	// 弁当私て
 	now = add(now, bento);
-	// 次の駅へ
-	now = add(now, cost);
 
 	int isRide = 0;
 	for (int i = 0; i < m; i++) {
@@ -58,9 +56,9 @@ int main() {
 		}
 	}
 
-	now = add(now, cost);
-
 	if (isRide == 1) {
+		// 次の駅へ
+		now = add(now, cost);
 		printf("%d\n", compare(goal, now));
 	} else {
 		printf("0\n");
@@ -71,14 +69,10 @@ int main() {
 
 // aの方が大きければ、1を返す、bの方が大きければ、0を返す。
 int compare(Time a, Time b) {
-	int h_a = a.h, m_a = a.m, h_b = b.h, m_b = b.m;
+	int a_h = a.h, a_m = a.m, b_h = b.h, b_m = b.m;
 	int result = 0;
 
-	if (h_a > h_b) {
-		result = 1;
-	} else if (h_a == h_b && m_a > m_b) {
-		result = 1;
-	} else if (h_a == h_b && m_a == m_b) {
+	if (a_h > b_h || (a_h >= b_h && a_m >= b_m)) {
 		result = 1;
 	}
 
