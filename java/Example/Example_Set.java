@@ -9,17 +9,11 @@ public class Example_Set {
 		scanner.nextLine();
 
 		Set<String> checkHash = new HashSet<String>();
+		String line = scanner.nextLine();
+		checkHash.contains(line);
+		checkHash.add(line);
 		String result = "No";
 
-		for (int i = 0; i < n; i++) {
-			String line = scanner.nextLine();
-			if (checkHash.contains(line)) {
-				result = "Yes";
-				break;
-			} else {
-				checkHash.add(line);
-			}
-		}
 		scanner.close();
 
 		System.out.println(result);
