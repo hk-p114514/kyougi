@@ -49,20 +49,19 @@ int main() {
 	// 次の駅へ
 	now = add(now, cost);
 
+	int isRide = 0;
 	for (int i = 0; i < m; i++) {
 		if (compare(sio_kita[ i ], now) == 1) {
 			now = sio_kita[ i ];
+			isRide = 1;
 			break;
 		}
 	}
 
 	now = add(now, cost);
 
-	printf("goal : %d %d\n", goal.h, goal.m);
-	printf("now  : %d %d\n", now.h, now.m);
-
-	if (compare(goal, now) == 1) {
-		printf("1\n");
+	if (isRide == 1) {
+		printf("%d\n", compare(goal, now));
 	} else {
 		printf("0\n");
 	}
@@ -72,7 +71,7 @@ int main() {
 
 // aの方が大きければ、1を返す、bの方が大きければ、0を返す。
 int compare(Time a, Time b) {
-	int h_a, m_a, h_b, m_b;
+	int h_a = a.h, m_a = a.m, h_b = b.h, m_b = b.m;
 	int result = 0;
 
 	if (h_a > h_b) {
