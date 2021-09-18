@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["bento", "kita"]
+  "cSpell.words": ["bento", "kita"],
+  "files.associations": {
+    "iostream": "cpp"
+  }
 }
